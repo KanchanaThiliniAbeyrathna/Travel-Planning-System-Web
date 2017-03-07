@@ -1,0 +1,100 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block stylesheets %}
+    
+{% endblock %}
+
+{% block body %}
+
+    <section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Recomanded Places</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="widget search" id="box">
+                        <form role="form">                            
+                            <input type="text" class="form-control search_box" name="search" id="myTextField" autocomplete="off" placeholder="Search Here">
+                            <div id="match"></div>  
+                        </form> 
+
+                    </div>
+                </div> 
+                <div class="col-md-4"> 
+                    <a class="btn btn-primary btn-lg" type="submit" href="{{ path('visitingplace_search' , { 'data': 'Sigiriya' } ) }}" > Go! </a>
+                </div>
+                   
+            </div>
+
+            {% set counter = 0 %}
+
+            {% for placeCategory in placeCategories %}.
+                <div class="accordion">
+                  <div class="panel-group" id="accordion1">              
+                    <div class="panel panel-default">
+                      <div class="panel-heading active">
+                        <h3 class="panel-title">
+                            {% set c = "#" ~ placeCategory.categoryName %}
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href={{c}}>
+                            {{placeCategory.categoryName}}
+                            <i class="fa fa-angle-right pull-right"></i>
+                            </a>
+                        </h3>
+                      </div>
+
+                      <div id={{placeCategory.categoryName}} class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="media accordion-inner">
+                                <div class="row" id="placeslist">
+
+                                    {% for visitingplace in visitingplaces %}
+
+                                        {% if placeCategory == visitingplace.placeCategory %}
+
+                                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                                <div class="recent-work-wrap">
+                                                    <img src="{{asset(visitingplace.path)}}" width="200" height="200">
+                                                    <div class="overlay">
+                                                        <div class="recent-work-inner">
+                                                            <h3><a href="{{ path('visitingplace_showplace', { 'id': visitingplace.id }) }}">{{ visitingplace.name }}</a> </h3>
+                                                            <a class="preview" href="{{ path('visitingplace_showplace', { 'id': visitingplace.id }) }}"><i class="fa fa-eye"></i> View</a>
+                                                            <p>{{ visitingplace.description }}</p>
+                                                            
+                                                        </div> 
+                                                    </div>
+                                                </div>                           
+                                            </div>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+            {% endfor %}
+
+            <div class="row" id="searchplace">
+
+            </div>
+            
+            
+        </div>
+    </section>
+{% endblock %} 
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('public/main/tuto/jquery-latest.min.js') }}"></script>
+    <script src="{{ asset('public/main/tuto/mmmm.js') }}"></script>
+    <script>
+        var loader = "{{ asset('searching.gif') }}"; 
+        var ROOT_URL = "{{ url('app1_example_homepage')}}"; 
+    </script>
+{% endblock %}

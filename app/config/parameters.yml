@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: travelplanning
+    database_user: root
+    database_password: null
+    #mailer_transport: smtp
+    #mailer_host: 127.0.0.1
+    #mailer_user: null
+    mailer_password: y1uy(V2A96S@
+    mailer_transport: gmail
+    mailer_encryption: ssl
+    mailer_auth_mode: login
+    mailer_host: smtp.gmail.com
+    mailer_user: greetingcard.shop.sl@gmail.com
+    secret: e6d77556d88d4e98b5ff10171699ce554fa28570

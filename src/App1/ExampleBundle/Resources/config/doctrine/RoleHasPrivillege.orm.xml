@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App1\ExampleBundle\Entity\RoleHasPrivillege" table="role_has_privillege">
+    <indexes>
+      <index name="fk_role_has_privillege_role1_idx" columns="role_role_id"/>
+      <index name="fk_role_has_privillege_privillege1_idx" columns="privillege_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_UNIQUE" columns="id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="privillege" target-entity="Privillege" fetch="LAZY">
+      <join-columns>
+        <join-column name="privillege_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="roleRole" target-entity="Role" fetch="LAZY">
+      <join-columns>
+        <join-column name="role_role_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

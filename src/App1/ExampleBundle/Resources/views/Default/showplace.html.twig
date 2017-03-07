@@ -1,0 +1,111 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block body %}
+
+	<section id="blog" class="container">
+        <div class="center">
+            <h2>{{visitingplace.name}}
+            <a class="btn btn-primary pull-right readmore" href="{{path('app1_example_places')}}"> Show All Places <i class="fa fa-angle-right"></i></a></h2>
+        </div>
+
+        <div class="blog">
+        	<div class="col-sm-8">
+                <div class="media contact-info wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="pull-left">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div class="media-body">
+                        <h2>You can reach us at </h2>
+                        <p>{{visitingplace.address}}</p>
+                    </div>
+                </div>
+                
+                <div class="blog-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="row">                        
+                        <div class="col-xs-12 col-sm-12 blog-content">
+                            <h3>{{visitingplace.description}}</h3>                            
+                        </div>
+                    </div>    
+            	</div>
+                <div class="row">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="text-primary">Map View</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div id="map" style="height:400px ; width:720px;"></div>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+            <div class="row">
+                 <div class="col-md-4">
+                    <div class="blog-item">
+                        <div class="row">
+                                <div class="col-xs-12 col-sm-12 blog-content">
+                                <img src="{{asset(visitingplace.path)}}" class="img-blog" width="360" height="360">                                
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+
+            </div>   
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABLJHKygtu6oFSppEux2iRoh4oekQF000&callback=initMap&sensor=false">
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+    var address = '{{visitingplace.address}}';
+    var name = '{{visitingplace.name}}';
+
+    function initMap() {
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat: -33.92, lng: 151.25}
+
+        });
+
+        var geocoder =  new google.maps.Geocoder();
+        
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker;
+
+        geocoder.geocode( { 'address': address }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                
+                map.setCenter(results[0].geometry.location);
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                }); 
+
+                google.maps.event.addListener(marker, 'click', (function(marker) {
+                    return function() {
+                      infowindow.setContent(name);
+                      infowindow.open(map, marker);
+                    }
+                })(marker));
+
+            } else {
+                window.alert("Something got wrong " + status);
+            }
+        });  
+    }
+</script>
+
+{% endblock %}
+
+

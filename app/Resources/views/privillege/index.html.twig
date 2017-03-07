@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Privillege list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Privillege</th>
+                <th>Description</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for privillege in privilleges %}
+            <tr>
+                <td><a href="{{ path('privillege_show', { 'id': privillege.id }) }}">{{ privillege.privillege }}</a></td>
+                <td>{{ privillege.description }}</td>
+                <td>{{ privillege.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('privillege_show', { 'id': privillege.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('privillege_edit', { 'id': privillege.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('privillege_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block stylesheets %}
+    
+{% endblock %}
+
+{% block body %}
+
+    <section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Recomanded Hotels</h2>
+            </div>
+
+            {% set counter = 0 %}
+
+            {% for hotelCategory in hotelCategories %}.
+
+                <div class="accordion">
+                  <div class="panel-group" id="accordion1">              
+                    <div class="panel panel-default">
+                        <div class="panel-heading active">
+                            <h3 class="panel-title">
+                                {% set c = "#" ~ hotelCategory.categoryName %}
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href={{c}}>
+                                {{hotelCategory.categoryName}}
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div id={{hotelCategory.categoryName}} class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="media accordion-inner">
+                                <div class="row" id="hotelsList">
+
+                                    {% for hotel in hotels %}
+
+                                        {% if hotelCategory == hotel.hotelCategory %}
+                                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                                <div class="recent-work-wrap">
+                                                    <img src="{{asset(hotel.path)}}" width="200" height="200">
+                                                    <div class="overlay">
+                                                        <div class="recent-work-inner">
+                                                            <h3><a href="{{ path('hotel_showhotel', { 'id': hotel.id }) }}">{{ hotel.name }}</a> </h3>
+                                                            <a class="preview" href="{{ path('hotel_showhotel', { 'id': hotel.id }) }}"><i class="fa fa-eye"></i> View</a>
+                                                            <p>{{ hotel.description }}</p>
+                                                            
+                                                        </div> 
+                                                    </div>
+                                                </div>                           
+                                            </div>
+                                        {% endif %}
+                                        
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}            
+                
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <ul class="pagination pagination-lg">
+                    <li><a href="#"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+            </div>
+                
+            
+        </div>
+    </section>
+{% endblock %} 
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('public/main/tuto/jquery-latest.min.js') }}"></script>
+    <script src="{{ asset('public/main/tuto/mmmm.js') }}"></script>
+    <script>
+        var loader = "{{ asset('searching.gif') }}"; 
+        var ROOT_URL = "{{ url('app1_example_homepage')}}"; 
+    </script>
+{% endblock %}

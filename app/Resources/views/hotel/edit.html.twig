@@ -1,0 +1,133 @@
+{% extends 'userbase.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-primary">Edit City</h1>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="text-primary">Edit City Here...</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form class="form-horizontal"  method="post" enctype="multipart/form-data">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Name</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.name, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Hotel Name', 'id' : 'form-name'} }) }}
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Address</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.address, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Permanant Address', 'id' : 'form-address'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">City</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.city, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Nearest city', 'id' : 'form-city'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Website</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.website, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Ex : www.example.com', 'id' : 'form-website'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">E mail</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.email, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Ex : example@gmail.com', 'id' : 'form-email'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Description</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.description, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Description about Hotel', 'id' : 'form-description'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Category</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.hotelCategory, { 'attr' : { 'class' : 'form-control'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Contact Numbers</label>
+                                            <div class="col-sm-10">
+                                                <input type="button" class="btn btn-default" id="x" value="Add" onclick="add();" />
+                                                <div id="y"></div>
+
+                                                <script language="javascript" type="text/javascript" >
+                                                    var count=0;
+                                                    function changeIt()
+                                                    {
+                                                    createTextbox.innerHTML = createTextbox.innerHTML +"<br><input type='text' name='mytext"+count+"' >";
+                                                    count+=1;
+                                                    }
+                                                    var i =0;
+                                                    function add() {
+                                                        var tag = document.createElement('input'); // Create a `input` element,
+                                                        tag.setAttribute('type', 'text');          // Set it's `type` attribute,
+                                                        tag.setAttribute('class', 'form-control');          // Set it's `class` attribute,
+                                                        tag.setAttribute('placeholder', 'Contact Number '+(i+1));          // Set it's `placeholder` attribute,
+                                                        tag.setAttribute('name', 'input'+i);               // Set it's `name` attribute,
+
+                                                        var br = document.createElement('br');     // Create a `br` element,
+
+                                                        var y = document.getElementById("y");      // "Get" the `y` element,
+                                                        y.appendChild(tag);                        // Append the input to `y`,
+                                                        
+                                                        y.appendChild(br);                         // Append the br to `y`.
+                                                        i++;
+                                                    }
+
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Image</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" name="img"/> 
+                                            </div>
+                                        </div> 
+
+                                        
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer">
+                                        {{ form_rest( edit_form ) }}                       
+                                            <button type="submit" class="btn btn-info pull-right">Save</button>
+                                        {{ form_end(edit_form) }}
+                                        {{ form_start(delete_form) }}
+                                            <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                                        {{ form_end(delete_form) }}
+
+                                        <a class="btn btn-default" href="{{ path('hotel_index') }}">Veiw List</a>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+    </div>
+{% endblock %}

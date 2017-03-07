@@ -1,0 +1,54 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block stylesheets %}
+    
+{% endblock %}
+
+{% block body %}
+
+    <section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Search Results</h2>
+                <a class="btn btn-primary readmore" href="{{path('app1_example_places')}}"> Show All Places  <i class="fa fa-angle-right"></i></a>
+                   
+            </div>
+
+            {% set counter = 0 %}
+
+            <div class="row" id="placeslist">
+                {% for visitingplace in visitingplaces %}
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="recent-work-wrap">
+                            <img src="{{asset(visitingplace.path)}}" width="300" height="300">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="{{ path('visitingplace_showplace', { 'id': visitingplace.id }) }}">{{ visitingplace.name }}</a> </h3>
+                                    <a class="preview" href="{{ path('visitingplace_showplace', { 'id': visitingplace.id }) }}"><i class="fa fa-eye"></i> View</a>
+                                    <p>{{ visitingplace.description }}</p>
+                                    
+                                </div> 
+                            </div>
+                        </div>                           
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <div class="row" id="searchplace">
+
+            </div>
+            
+            
+        </div>
+    </section>
+{% endblock %} 
+
+{% block javascripts %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{{ asset('public/tuto/mmmm.js') }}"></script>
+    <script>
+        var loader = "{{ asset('searching.gif') }}"; 
+        var ROOT_URL = "{{ url('app1_example_homepage')}}"; 
+    </script>
+{% endblock %}

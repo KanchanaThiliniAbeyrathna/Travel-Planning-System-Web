@@ -1,0 +1,50 @@
+{% extends 'loginbase.html.twig' %}
+
+{% block body %}
+
+    <style>
+        body {background: url('{{asset('public/img/bg.jpg')}}')}
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" method="post">
+                            <fieldset>
+                                <div class="alert alert-dismissable">
+                                    <strong>{{msg}}</strong>
+                                </div>
+                                <div class="form-group input-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" required>
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                                </div>
+                                <div class="form-group input-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" required>
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" value="remember-me">Remember Me
+                                    </label>
+                                </div>
+                                
+                                <button type="Submit" class="btn btn-lg btn-info pull-right">Sign In</button>
+                                <a href="{{path('user_signup')}}" class="btn btn-outline btn-lg btn-info pull-left">Sign Up</a>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+
+
+{% endblock %}

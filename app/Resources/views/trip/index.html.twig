@@ -1,0 +1,28 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block body %}
+    <section id="feature" class="transparent-bg">
+        <div class="container">
+           <div class="center wow fadeInDown">
+                <h2>Your Trips<a class="btn pull-right btn-lg btn-default btn-outline" href="{{path('trip_new')}}"> New Trip</a></h2>
+                
+            </div>
+
+            <div class="row">
+                <div class="features">
+                    {% for trip in trips %}
+                        <div class="col-md-6 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            <div class="feature-wrap">
+                                <i class="fa fa-bullhorn"></i>
+                                <h2>Trip {{loop.index}}</h2>
+                                <h3><a href="{{path('trip_show', { 'id': trip.id }) }}">{{trip.name}}</a></h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+{% endblock %}

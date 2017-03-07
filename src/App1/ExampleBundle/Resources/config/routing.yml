@@ -1,0 +1,28 @@
+app1_example_homepage:
+    path:     /
+    defaults: { _controller: App1ExampleBundle:Default:index }
+
+app1_example_contact:
+    path:     /contact
+    defaults: { _controller: App1ExampleBundle:Default:contact }
+
+app1_example_about:
+    path:     /about
+    defaults: { _controller: App1ExampleBundle:Default:about }
+
+app1_example_hotels:
+    path:     /hotels
+    defaults: { _controller: App1ExampleBundle:Default:hotels }
+
+app1_example_places:
+    path:     /places
+    defaults: { _controller: App1ExampleBundle:Default:places }
+    methods:  [GET, POST]
+
+app1_example_ajax_update:
+    path:     /ajax/update
+    defaults: { _controller: App1ExampleBundle:AjaxUpdate:update }
+
+app1_example_ajax_acceptH:
+    path:     /ajax/acceptH
+    defaults: { _controller: App1ExampleBundle:AjaxUpdate:acceptH }

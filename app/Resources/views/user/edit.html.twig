@@ -1,0 +1,84 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <h1 class="page-header text-info">Edit Profile</h1>
+            </div>
+            <div class="col-lg-1"></div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Edit your user account details<a class="btn btn-warning pull-right" href="{{ path('user_resetpw', { 'id': app.session.get('login').getId() }) }}">Reset Password</a></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form class="form-horizontal"  method="post">
+                                    <div class="box-body">
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Full Name</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.nameInFull, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Name in Full', 'id' : 'form-nameInFull'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Name in Initials</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.nameInInitials, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Name in Initials', 'id' : 'form-nameInInitials'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">E mail</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.email, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'E mail', 'id' : 'form-email'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Username</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.username, { 'attr' : { 'class' : 'form-control' , 'placeholder' : 'Username', 'id' : 'form-username'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Sex</label>
+                                            <div class="col-sm-10">
+                                                {{ form_widget(edit_form.sex, { 'attr' : { 'class' : 'form-control'} }) }}
+                                            </div>
+                                        </div>
+                                        
+                                    </div><!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <a class="btn btn-default pull-left" href="{{ path('user_show', { 'id': app.session.get('login').getId() }) }}">Cancel</a>
+                                        {{ form_rest( edit_form ) }}                       
+                                            <button type="submit" class="btn btn-info pull-right">Save</button>
+                                        {{ form_end(edit_form) }}
+                                        {{ form_start(delete_form) }}
+                                            <button type="submit" class="btn btn-danger pull-right">Delete</button>
+                                        {{ form_end(delete_form) }}
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+    <br><br><br><br>
+{% endblock %}

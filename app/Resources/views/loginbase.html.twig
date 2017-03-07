@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="{{asset('public/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">  
+    <link rel="stylesheet" href="{{asset('public/bower_components/metisMenu/dist/metisMenu.min.css')}}">  
+    <link rel="stylesheet" href="{{asset('public/dist/css/sb-admin-2.css')}}">  
+    <link rel="stylesheet" href="{{asset('public/bower_components/font-awesome/css/font-awesome.min.css')}}" type="text/css">
+
+    <title>{% block title %}TraTRIP | Plan Your Trip{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('relax.ico') }}" />
+
+</head>
+
+<body>
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}{% endblock %}
+    <script src="{{asset('public/bower_components/jquery/dist/jquery.min.js')}}"></script>
+
+    <script src="{{asset('public/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
+    <script src="{{asset('public/bower_components/metisMenu/dist/metisMenu.min.js')}}"></script>
+
+    <script src="{{asset('public/dist/js/sb-admin-2.js')}}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+{% extends 'userbase.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-primary">{{ hotel.name }}</h1>
+            </div>           
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+
+                                    <tr>
+                                        <th>Address</th>
+                                        <td>{{ hotel.address }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Website</th>
+                                        <td>{{ hotel.website }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>{{ hotel.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td>{{ hotel.description }}</td>
+                                    </tr>
+
+                                    <img src="{{asset(hotel.path)}}" width="275" height="275">
+                                    
+                                </tbody>
+                            </table>
+                            <div class="box-footer">
+                                <a class="btn btn-info pull-right" href="{{ path('hotel_edit', { 'id': hotel.id }) }}">Edit</a>
+                                {{ form_start(delete_form) }}
+                                    <input type="submit" class="btn btn-danger pull-right" value="Delete">
+                                {{ form_end(delete_form) }}
+
+                                <a class="btn btn-default" href="{{ path('hotel_index') }}">Back to the List</a>
+                             </div>
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+    </div>
+
+{% endblock %}

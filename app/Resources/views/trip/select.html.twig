@@ -1,0 +1,162 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+    <form class="form-horizontal"  method="post">
+    	<section id="recent-works">
+            <div class="container wow fadeInDown">
+                <div class="center wow fadeInDown">
+                    <h2>Select places you want to go...</h2>
+                       
+                </div>
+
+                <script>
+                    var latList = [] ; 
+                    var longList =[]; 
+                    var infoList =[];    
+                </script>
+
+                <div class="row" id="placeslist">
+                    {% for visitingplace in visitingplaces %}
+
+                    <script>
+                        latList.push('{{ visitingplace.latitude }}');
+                        longList.push('{{ visitingplace.longitude }}');  
+                        infoList.push('{{ visitingplace.name }}');                                      
+                    </script>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="recent-work-wrap">
+                                <img src="{{asset(visitingplace.path)}}" width="200" height="200">
+                                <div class="overlay">
+                                    <div class="recent-work-inner">
+                                        
+                                        <div class="checkbox">
+    		                                <label>
+    		                                    <input type="checkbox" name="place[]" value="{{ visitingplace.id }}" ><h3><a href="{{ path('visitingplace_showplace', { 'id': visitingplace.id }) }}">{{ visitingplace.name }}</a> </h3>
+    		                                </label>
+    		                            </div>
+                                        
+                                    </div> 
+                                </div>
+                            </div>                           
+                        </div>
+
+                    {% endfor %}
+                </div>
+                            
+            </div>
+        </section>
+
+        <section id="recent-works">
+            <div class="container wow fadeInDown">
+                <div class="center wow fadeInDown">
+                    <h2>Select hotels you want to stay...</h2>
+                </div>
+
+                <div class="row" id="placeslist">
+                    
+                    {% for hotel in hotels %}
+                    <script>
+                        latList.push('{{ hotel.latitude }}');
+                        longList.push('{{ hotel.longitude }}');  
+                        infoList.push('{{ hotel.name }}');                                      
+                    </script>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="recent-work-wrap">
+                                <img src="{{asset(hotel.path)}}" width="200" height="200">
+                                <div class="overlay">
+                                    <div class="recent-work-inner">
+                                        
+                                        <div class="checkbox">
+    		                                <label>
+    		                                    <input type="checkbox" name="hotel[]" value="{{ hotel.id }}"><h3><a href="{{ path('hotel_showhotel', { 'id': hotel.id }) }}">{{ hotel.name }}</a> </h3>
+    		                                </label>
+    		                            </div>
+                                        
+                                    </div> 
+                                </div>
+                            </div>                           
+                        </div>
+
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </section>
+        <section id="recent-works">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-primary">Map View</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div id="map" style="height:400px ; width:850px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </section>
+        <footer>
+        	<div class="center wow fadeInDown">
+                <button class="btn btn-primary btn-lg readmore" type="Submit" class="btn btn-primary">Select</button>
+        		<a class="btn btn-default btn-lg btn-outline readmore" href="{{path('app1_example_homepage')}}"> Cancel </a>                  
+            </div>    	
+        </footer>
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABLJHKygtu6oFSppEux2iRoh4oekQF000&libraries=places&callback=initMap&sensor=false">
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+
+    function initMap() {
+        var col = {lat: 6.927, lng: 79.861};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: col
+
+        });
+        
+        var marker, i;
+
+        for (i = 0; i < longList.length; i++) {
+
+            var infoWindow = new google.maps.InfoWindow();
+            var latlng = new google.maps.LatLng(latList[i],longList[i]);
+            map.setCenter(latlng);
+
+            marker = new google.maps.Marker({
+                map: map,
+                position: latlng
+            });
+            
+            marker.content =infoList[i];
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.setContent(this.content);
+                infoWindow.open(this.getMap(), this);
+            });
+        }
+        
+    }
+</script>
+
+{% endblock %}
+
+

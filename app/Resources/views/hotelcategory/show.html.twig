@@ -1,0 +1,46 @@
+{% extends 'userbase.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-primary">{{ hotelCategory.categoryName }}</h1>
+            </div>           
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td>{{ hotelCategory.description }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="box-footer">
+                                <a class="btn btn-info pull-right" href="{{ path('hotelcategory_edit', { 'id': hotelCategory.id }) }}">Edit</a>
+                                {{ form_start(delete_form) }}
+                                    <input type="submit" class="btn btn-danger pull-right" value="Delete">
+                                {{ form_end(delete_form) }}
+
+                                <a class="btn btn-default" href="{{ path('hotelcategory_index') }}">Back to the List</a>
+                             </div>
+                                
+                            </div>
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+    </div>
+
+{% endblock %}

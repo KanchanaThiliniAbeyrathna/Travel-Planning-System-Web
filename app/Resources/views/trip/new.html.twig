@@ -1,0 +1,55 @@
+{% extends '1mainpage.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <form class="form-horizontal"  method="post">
+                    <div class="box-body">
+                        <div id="floating-panel">
+                        <div class="col-md-5">
+                            <div class="center wow fadeInDown">
+                                <h2>Plan Your Trip</h2>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-11">
+                                    <input type="number" min=0 name="no_of_days" placeholder="--No of Days--" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-11">
+                                    <select name="city" id="city" class="form-control">
+                                        <option value="" disabled selected>--Select Destination--</option>
+                                        {% for city in cities %}
+                                            <option value="{{city.id}}">{{city.city}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-11">
+                                    <select name="placeCategory" id="placeCategory" class="form-control">
+                                        <option value="" disabled selected>--Select Category--</option>
+                                        {% for placeCategory in placeCategories %}
+                                            <option value="{{placeCategory.id}}">{{placeCategory.categoryName}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <button type="Submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div id="right-panel"></div>
+                            <div id="map"></div>
+                        </div>
+
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </section>        
+{% endblock %}

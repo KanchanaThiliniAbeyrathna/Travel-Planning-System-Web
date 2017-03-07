@@ -1,0 +1,35 @@
+{% extends 'userbase.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header text-primary">All Cities
+                <a class="btn btn-outline btn-info pull-right" href="{{ path('city_new') }}">Create New</a>
+                </h1>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                {% for city in cities %}
+                    <div class="col-lg-4">
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">   
+
+                                        <p class="lead text-center text-primary" >{{ city.city }}</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-block btn-info" href="{{ path('city_show', { 'id': city.id }) }}">View Details  <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

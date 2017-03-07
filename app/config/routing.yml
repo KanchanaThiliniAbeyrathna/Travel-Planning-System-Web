@@ -1,0 +1,67 @@
+app1_example_trip:
+    resource: "@App1ExampleBundle/Controller/TripController.php"
+    type:     annotation
+
+app1_example_visitingplace:
+    resource: "@App1ExampleBundle/Controller/VisitingplaceController.php"
+    type:     annotation
+
+app1_example_hotel:
+    resource: "@App1ExampleBundle/Controller/HotelController.php"
+    type:     annotation
+
+app1_example_hotel:
+    resource: "@App1ExampleBundle/Controller/HotelController.php"
+    type:     annotation
+
+app1_example_hotel:
+    resource: "@App1ExampleBundle/Controller/HotelController.php"
+    type:     annotation
+
+app1_example_visitingplace:
+    resource: "@App1ExampleBundle/Controller/VisitingplaceController.php"
+    type:     annotation
+
+app1_example_place_category:
+    resource: "@App1ExampleBundle/Controller/PlaceCategoryController.php"
+    type:     annotation
+
+app1_example_hotel_category:
+    resource: "@App1ExampleBundle/Controller/HotelCategoryController.php"
+    type:     annotation
+
+app1_example_city:
+    resource: "@App1ExampleBundle/Controller/CityController.php"
+    type:     annotation
+
+app1_example_privillege:
+    resource: "@App1ExampleBundle/Controller/PrivillegeController.php"
+    type:     annotation
+
+app1_example_role:
+    resource: "@App1ExampleBundle/Controller/RoleController.php"
+    type:     annotation
+
+app1_example_visitingplace:
+    resource: "@App1ExampleBundle/Controller/VisitingplaceController.php"
+    type:     annotation
+
+app1_example_user:
+    resource: "@App1ExampleBundle/Controller/UserController.php"
+    type:     annotation
+
+app1_example_city:
+    resource: "@App1ExampleBundle/Controller/CityController.php"
+    type:     annotation
+
+app1_example_hotel:
+    resource: "@App1ExampleBundle/Controller/HotelController.php"
+    type:     annotation
+
+app1_example:
+    resource: "@App1ExampleBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
